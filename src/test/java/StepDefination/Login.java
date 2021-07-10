@@ -77,31 +77,39 @@ public class Login {
         world.find_WebElement_by_xpath("//input[@name='end time']").sendKeys("06-10am");
     }
 
-    @When("I Select Support Group Name")
-    public void i_select_support_group_name() {
-        Select SupportGroup =new Select(world.driver.findElement(By.xpath("//h6[contains(text(), 'Support Group')]//parent::div[@class='form-group']//select")));
-        SupportGroup.selectByValue("2");
-    }
+
+
     @When("I Enter Maximum Size")
     public void i_enter_maximum_size() {
         world.find_WebElement_by_xpath("//input[@name='start time']").sendKeys("1");
     }
 
+    @When("I Select Support Group Name")
+    public void i_select_support_group_name() {
+        Select SupportGroup = new Select(world.find_WebElement_by_xpath("//h6[contains(text(), 'Support Group')]//parent::div[@class='form-group']//select"));
+        SupportGroup.selectByVisibleText("The Afterglow Edited");
+
+//
+//        WebElement SupportGroup = world.find_WebElement_by_xpath("//h6[contains(text(), 'Support Group')]//parent::div[@class='form-group']//select");
+//        Select dropdownField = new Select(SupportGroup);
+//        dropdownField.selectByVisibleText("The Afterglow Edited");
+    }
+
     @When("I Select Location")
     public void i_select_location() {
-        Select Location =new Select(world.driver.findElement(By.xpath("//select[@name='location']")));
+        Select Location =new Select(world.find_WebElement_by_xpath("//select[@name='location']"));
         Location.selectByIndex(6);
     }
 
     @When("I select Location Details")
     public void i_select_location_details() {
-        Select LocationDetails =new Select(world.driver.findElement(By.xpath("//select[@name='location details']")));
+        Select LocationDetails =new Select(world.find_WebElement_by_xpath("//select[@name='location details']"));
         LocationDetails.selectByIndex(1);
     }
 
     @When("I Select Survey")
     public void i_select_survey() {
-        Select LocationDetails =new Select(world.driver.findElement(By.xpath("//select[@class='form-control mt-2 ']")));
+        Select LocationDetails =new Select(world.find_WebElement_by_xpath("//select[@class='form-control mt-2 ']"));
         LocationDetails.selectByIndex(1);
     }
 
