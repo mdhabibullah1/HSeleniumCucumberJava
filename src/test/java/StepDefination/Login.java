@@ -16,16 +16,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class Login {
+    private  World world;
 
-    private WebDriver driver;
-
-
-    @Before
-    public void setupTest() {
-        WebDriverManager.chromedriver().setup();
-
-        driver = new ChromeDriver();
+    public  Login(World world) {
+        this.world = world;
     }
+
+//    @Before
+//    public void setupTest() {
+//        WebDriverManager.chromedriver().setup();
+//
+//        driver = new ChromeDriver();
+//    }
 
   /*  @After
     public void teardown() throws InterruptedException {
