@@ -5,7 +5,6 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -46,7 +45,8 @@ public class Login {
     @When("I click on Shopping Service")
     public void i_click_on_shopping_service() {
 
-        world.find_WebElement_by_xpath("//span[@class='menu-title'][contains(text(), 'Shopping Services')]").click();
+        world.find_WebElement_by_xpath("//span[contains(text(), 'Shopping Services')]").click();
+        //unable to commit and push
 
     }
     @When("I click on Support Group")
