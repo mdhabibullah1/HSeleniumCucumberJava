@@ -5,7 +5,7 @@ Feature: Login
     When I click on Shopping Service
     And I click on Support Group
     And I click on Sessions
-#    And I click on Add New
+    And I click on Add New
 #    And I Select Support Group Name
 #    And I Enter Time
 #    And I Enter Maximum Size
