@@ -21,8 +21,7 @@ public class World {
     }
 
     public WebElement find_WebElement_by_xpath(String xpath){
-
-        WebElement foo =   new WebDriverWait(driver, Duration.ofSeconds(220))
+        WebElement foo =   new WebDriverWait(this.driver, Duration.ofSeconds(220))
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
         System.out.println(foo.getText());
         return foo;
