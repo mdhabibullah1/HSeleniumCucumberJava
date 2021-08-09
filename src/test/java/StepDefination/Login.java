@@ -22,42 +22,25 @@ public class Login {
         this.world = world;
     }
 
-//    @Before
-//    public void setupTest() {
-//        WebDriverManager.chromedriver().setup();
-//
-//        driver = new ChromeDriver();
-//    }
-
-  /*  @After
-    public void teardown() throws InterruptedException {
-
-
-        if (driver != null) {
-            driver.quit();
-        }
-    }*/
-// Test comment
     @Given("I go to this url {string}")
     public void i_go_to_this_url(String url) {
-        world.driver.get(url);
-        world.driver.manage().window().maximize();
+        this.world.driver.get(url);
+       // world.driver.manage().window().maximize();
+       // world.wait_for_loader();
     }
 
     @When("I click on Shopping Service")
     public void i_click_on_shopping_service() {
-
-        world.find_WebElement_by_xpath("//span[contains(text(), 'Shopping Services')]").click();
-        //unable to commit and push
+        this.world.find_WebElement_by_xpath("//span[@class='menu-title' and contains(text(), 'Shopping Service')]").click();
 
     }
     @When("I click on Support Group")
     public void i_click_on_support_group() throws InterruptedException {
-        world.find_WebElement_by_xpath("//a[@href='/momscradle-admin-webapp/shopping-services/supportgroup']").click();
-
-        Thread.sleep(5000);
-//        JavascriptExecutor js = (JavascriptExecutor) world;
-//        js.executeScript("window.scrollBy(0,0)", "");
+        world.find_WebElement_by_xpath("//a[@class='nav-link' and contains(text(), 'Support Group')]").click();
+//
+//        Thread.sleep(5000);
+////        JavascriptExecutor js = (JavascriptExecutor) world;
+////        js.executeScript("window.scrollBy(0,0)", "");
     }
     @When("I click on Sessions")
     public void i_click_on_sessions() {
