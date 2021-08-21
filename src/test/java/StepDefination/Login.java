@@ -2,6 +2,7 @@ package StepDefination;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -49,28 +50,51 @@ public class Login {
 
     @When("I click on Sessions")
     public void i_click_on_sessions() {
-        this.world.find_WebElement_by_xpath("//span[contains(text(), 'Sessions')]").click();
+        WebElement element = this.world.find_WebElement_by_xpath(this.world.allVariables.xpathSession);
+        Actions actions = new Actions(this.world.driver);
+        this.world.waitForLoad();
+        actions.moveToElement(element).click(element).perform();
 
 
     }
 
     @When("I click on Add New")
     public void i_click_on_add_new() {
-        this.world.find_WebElement_by_xpath("//a[@href='/momscradle-admin-webapp/shopping-services/supportgroup/session/new']").click();
+        WebElement element = this.world.find_WebElement_by_xpath(this.world.allVariables.xpathAddNew);
+        Actions actions = new Actions(this.world.driver);
+        this.world.waitForLoad();
+        actions.moveToElement(element).click(element).perform();
     }
 
-
-    @When("I Enter Time")
-    public void i_enter_time() {
-
-        this.world.find_WebElement_by_xpath("//input[@name='start time']").sendKeys("06-00am");
-        this.world.find_WebElement_by_xpath("//input[@name='end time']").sendKeys("06-10am");
+    @When("I click on Select Support Group")
+    public void I_click_on_Select_Support_Group(){
+        WebElement element = this.world.find_WebElement_by_xpath(this.world.allVariables.xpathSelectSG);
+        this.world.waitForLoad();
+        Actions actions = new Actions(this.world.driver);
+        actions.moveToElement(element).click(element).perform();
     }
 
+    @And("I Enter Start Time")
+    public void iEnterStartTime() {
+        WebElement element = this.world.find_WebElement_by_xpath(this.world.allVariables.xpathStartTime);
+        this.world.waitForLoad();
+        Actions actions = new Actions(this.world.driver);
+        actions.moveToElement(element).sendKeys("06-00am").perform();
+    }
+    @And("I Enter End Time")
+    public void iEnterEndTime() {
+        WebElement element = this.world.find_WebElement_by_xpath(this.world.allVariables.xpathEndTime);
+        this.world.waitForLoad();
+        Actions actions = new Actions(this.world.driver);
+        actions.moveToElement(element).sendKeys("06-10am").perform();
+    }
 
     @When("I Enter Maximum Size")
     public void i_enter_maximum_size() {
-        this.world.find_WebElement_by_xpath("//input[@name='start time']").sendKeys("1");
+        WebElement element = this.world.find_WebElement_by_xpath(this.world.allVariables.xpathMaxSize);
+        this.world.waitForLoad();
+        Actions actions = new Actions(this.world.driver);
+        actions.moveToElement(element).sendKeys("1").perform();
     }
 
     @When("I Select Support Group Name")
@@ -112,5 +136,7 @@ public class Login {
         this.world.find_WebElement_by_xpath("//button/span[contains(text(), 'Login')]").click();
         this.world.waitForLoad();
     }
+
+
 
 }

@@ -15,7 +15,6 @@ public class World {
     public DevTools devTools;
     public AllVariables allVariables;
 
-    //test comment
 
     public World() {
     }

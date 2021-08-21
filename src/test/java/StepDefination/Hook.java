@@ -19,7 +19,7 @@ public class Hook extends World {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
-        options.setBinary("C:\\Users\\sunny\\chromium-91_Win64\\chrome.exe");
+        options.setBinary("C:\\Users\\Md Habibullah\\chromium-91_Win64\\chrome.exe");
         this.world.driver = new ChromeDriver(options);
 
         this.world.devTools = ((ChromeDriver) this.world.driver).getDevTools();
