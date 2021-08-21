@@ -1,18 +1,12 @@
 package StepDefination;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import junit.framework.Assert;
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class Login {
@@ -36,11 +30,13 @@ public class Login {
 
         Actions actions = new Actions(this.world.driver);
         actions.moveToElement(element).click(element).perform();
+        Assert.assertTrue(element.isDisplayed());
     }
 
 
     @When("I click on Support Group")
     public void i_click_on_support_group() {
+
         WebElement element = this.world.find_WebElement_by_xpath(this.world.allVariables.xpathSupportGroup);
         Actions actions = new Actions(this.world.driver);
         this.world.waitForLoad();
@@ -50,6 +46,7 @@ public class Login {
 
     @When("I click on Sessions")
     public void i_click_on_sessions() {
+        Assert.assertEquals("WHRC | Supportgroup", this.world.driver.getTitle());
         WebElement element = this.world.find_WebElement_by_xpath(this.world.allVariables.xpathSession);
         Actions actions = new Actions(this.world.driver);
         this.world.waitForLoad();
@@ -60,6 +57,7 @@ public class Login {
 
     @When("I click on Add New")
     public void i_click_on_add_new() {
+        Assert.assertTrue(this.world.find_WebElement_by_xpath(this.world.allVariables.xpathSession).isDisplayed());
         WebElement element = this.world.find_WebElement_by_xpath(this.world.allVariables.xpathAddNew);
         Actions actions = new Actions(this.world.driver);
         this.world.waitForLoad();
@@ -99,7 +97,11 @@ public class Login {
 
     @When("I Select Support Group Name")
     public void i_select_support_group_name() {
-        Select SupportGroup = new Select(this.world.find_WebElement_by_xpath("//h6[contains(text(), 'Support Group')]//parent::div[@class='form-group']//select"));
+        Assert.assertEquals("WHRC | Supportgroup - Add Session", this.world.driver.getTitle());
+
+        this.world.find_WebElement_by_xpath(this.world.allVariables.xpathSupportGroupDropdown).click();
+        this.world.waitForLoad();
+        Select SupportGroup = new Select(this.world.find_WebElement_by_xpath(this.world.allVariables.xpathSupportGroupDropdown));
         SupportGroup.selectByVisibleText("The Afterglow Edited");
 
     }

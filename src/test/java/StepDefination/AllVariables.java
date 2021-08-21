@@ -20,6 +20,7 @@ public class AllVariables extends World {
     public String xpathStartTime = "//input[@name='start time']";
     public String xpathEndTime = "//input[@name='end time']";
     public String xpathMaxSize = "//input[@name='start time']";
+    public String xpathSupportGroupDropdown = "//div/select[@class='form-control']/option[contains(text(),'Select Support Group')]/..";
 
 
     public AllVariables() {
